@@ -19,7 +19,7 @@ export default function ({ src, desc }) {
 
         .image-container p {
           margin: 0.5rem 0 0.5rem 0;
-          font-weight: 500;
+          font-weight: 400;
         }
       `}</style>
     </div>

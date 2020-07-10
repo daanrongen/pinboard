@@ -1,7 +1,13 @@
+import times from 'lodash.times'
+
 export default function Grid({ children, cols }) {
+  const columns = []
+  for (let i = 0; i < cols; i++) {
+    columns.push(<div className="column">{children[i % cols]}</div>)
+  }
   return (
     <>
-      <div id="grid">{children}</div>
+      <div id="grid">{columns}</div>
 
       <style jsx>{`
         #grid {
