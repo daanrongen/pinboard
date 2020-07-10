@@ -18,7 +18,7 @@ export default function Pin({ item, showTags = false }) {
         {showTags && (
           <ul>
             {tags.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={tag} tag={tag} isActive />
             ))}
           </ul>
         )}
@@ -38,7 +38,7 @@ export default function Pin({ item, showTags = false }) {
         {showTags && (
           <ul>
             {tags.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={tag} tag={tag} isActive />
             ))}
           </ul>
         )}
@@ -58,7 +58,7 @@ export default function Pin({ item, showTags = false }) {
         {showTags && (
           <ul>
             {tags.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={tag} tag={tag} isActive />
             ))}
           </ul>
         )}
