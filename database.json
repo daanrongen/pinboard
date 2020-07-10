@@ -12,7 +12,17 @@
   {
     "type": "image",
     "id": "https://pbs.twimg.com/media/EbNgp0lWkAAidj8?format=png&name=medium",
-    "desc": "Mark Webster",
+    "desc": "Mark Webster, generated work",
     "tags": ["generative", "experiment"]
+  },
+  {
+    "type": "twitter",
+    "id": "1280903835519778819",
+    "tags": ["skeumorphism"]
+  },
+  {
+    "type": "twitter",
+    "id": "1280870166537154560",
+    "tags": ["skeumorphism", "generative art", "digital nature"]
   }
 ]

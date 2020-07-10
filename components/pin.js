@@ -8,7 +8,7 @@ export default function Pin({ item, showTags = false }) {
 
   if (type === 'instagram')
     return (
-      <div>
+      <div className="pin">
         <InstagramEmbed
           url={id}
           hideCaption
@@ -18,7 +18,7 @@ export default function Pin({ item, showTags = false }) {
         {showTags && (
           <ul>
             {tags.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={tag} tag={tag} isActive />
             ))}
           </ul>
         )}
@@ -33,12 +33,12 @@ export default function Pin({ item, showTags = false }) {
 
   if (type === 'twitter')
     return (
-      <div>
+      <div className="pin">
         <TwitterTweetEmbed tweetId={id} />
         {showTags && (
           <ul>
             {tags.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={tag} tag={tag} isActive />
             ))}
           </ul>
         )}
@@ -53,12 +53,12 @@ export default function Pin({ item, showTags = false }) {
 
   if (type === 'image')
     return (
-      <div>
+      <div className="pin">
         <Image src={id} desc={desc} />
         {showTags && (
           <ul>
             {tags.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={tag} tag={tag} isActive />
             ))}
           </ul>
         )}

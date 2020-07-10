@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 import database from '../database.json'
 import { getTags } from '../utils'
@@ -9,7 +9,22 @@ import Pin from '../components/pin'
 import Tag from '../components/tag'
 
 export default function Home() {
-  const [showTags, setShowTags] = useState(true)
+  const [showTags, setShowTags] = useState(false)
+  const [activeTags, setActiveTags] = useState(getTags())
+
+  const tags = useMemo(() => {
+    return [...activeTags]
+  }, [activeTags])
+
+  const handleClick = (tag) => {
+    if (tags.includes(tag)) {
+      setActiveTags(activeTags.filter((e) => e !== tag))
+      console.log('removed: ', tag)
+    } else {
+      setActiveTags(tags.push(tag))
+      console.log('added: ', tag)
+    }
+  }
 
   return (
     <div className="container">
@@ -19,26 +34,36 @@ export default function Home() {
       </Head>
 
       <main>
-        <button id="tags-switch" onClick={() => setShowTags(!showTags)}>
-          {showTags ? 'hide tags' : 'show tags'}
-        </button>
+        <div id="tags-menu">
+          <button id="tags-switch" onClick={() => setShowTags(!showTags)}>
+            {showTags ? 'hide tags' : 'show tags'}
+          </button>
 
-        {showTags && (
-          <div id="tags-menu">
-            <ul>
-              {getTags().map((tag) => (
-                <li>
-                  <Tag tag={tag} isActive={false} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+          {showTags && (
+            <div>
+              <ul>
+                {getTags().map((tag) => (
+                  <li key={tag}>
+                    <Tag
+                      tag={tag}
+                      isActive={tags.includes(tag)}
+                      handleClick={handleClick}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
 
         <Grid cols={4}>
-          {database.map((entry) => (
-            <Pin item={entry} showTags={showTags} />
-          ))}
+          {database
+            .filter((entry) =>
+              entry.tags.some((r) => activeTags.indexOf(r) >= 0)
+            )
+            .map((entry, index) => (
+              <Pin item={entry} showTags={showTags} key={`pin-${index}`} />
+            ))}
         </Grid>
       </main>
 
@@ -54,12 +79,20 @@ export default function Home() {
         #tags-switch {
           position: absolute;
           right: 1rem;
+          background-color: transparent;
+          border: none;
+          color: grey;
+          transition: 0.2s;
+        }
+
+        #tags-switch:hover {
+          cursor: pointer;
+          color: black;
         }
 
         #tags-menu {
           min-height: 40px;
           margin-bottom: 12px;
-          border-bottom: 1px solid lightgrey;
         }
 
         #tags-menu ul {
