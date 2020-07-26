@@ -1,22 +1,28 @@
-import times from 'lodash.times'
+import Masonry from 'react-masonry-css'
 
 export default function Grid({ children, cols }) {
   const columns = []
-  for (let i = 0; i < cols; i++) {
-    columns.push(<div className="column">{children[i % cols]}</div>)
+  for (let i = 0; i < children.length; i++) {
+    columns.push(
+      <>
+        <div className="column">{children[i]}</div>
+        <style jsx>{`
+          .column {
+            height: max-content;
+            display: inline-block;
+          }
+        `}</style>
+      </>
+    )
   }
-  return (
-    <>
-      <div id="grid">{columns}</div>
 
-      <style jsx>{`
-        #grid {
-          display: grid;
-          grid-template-columns: repeat(${cols}, minmax(180px, 1fr));
-          grid-gap: 10px;
-          grid-auto-flow: dense;
-        }
-      `}</style>
-    </>
+  return (
+    <Masonry
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column"
+      breakpointCols={{ default: 4, 1280: 3, 1100: 2, 500: 1 }}
+    >
+      {columns}
+    </Masonry>
   )
 }

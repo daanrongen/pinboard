@@ -40,7 +40,7 @@ export default function Home() {
           </button>
 
           {showTags && (
-            <div>
+            <div className="tags-list">
               <ul>
                 {getTags().map((tag) => (
                   <li key={tag}>
@@ -97,6 +97,8 @@ export default function Home() {
 
         #tags-menu ul {
           display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
         }
 
         a {
@@ -107,10 +109,12 @@ export default function Home() {
         ul {
           padding: 0;
           margin: 0;
+          margin-bottom: 2rem;
         }
 
         li {
           list-style-type: none;
+          margin-top: 1.5rem;
         }
       `}</style>
 
@@ -126,6 +130,22 @@ export default function Home() {
 
         * {
           box-sizing: border-box;
+        }
+
+        .my-masonry-grid {
+          display: flex;
+          max-width: 120rem;
+          margin: 0 auto;
+        }
+
+        .my-masonry-grid_column {
+          padding-left: 1rem;
+          background-clip: padding-box;
+        }
+
+        .my-masonry-grid_column > div {
+          margin-bottom: 0.5rem;
+          width: 100%;
         }
       `}</style>
     </div>
