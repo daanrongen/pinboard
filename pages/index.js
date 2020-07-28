@@ -61,6 +61,7 @@ export default function Home() {
             .filter((entry) =>
               entry.tags.some((r) => activeTags.indexOf(r) >= 0)
             )
+            .reverse()
             .map((entry, index) => (
               <Pin item={entry} showTags={showTags} key={`pin-${index}`} />
             ))}

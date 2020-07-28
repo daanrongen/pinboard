@@ -10,12 +10,6 @@
     "tags": ["simulation", "experiment"]
   },
   {
-    "type": "image",
-    "id": "https://pbs.twimg.com/media/EbNgp0lWkAAidj8?format=png&name=medium",
-    "desc": "Mark Webster, generated work",
-    "tags": ["generative", "experiment"]
-  },
-  {
     "type": "twitter",
     "id": "1280870166537154560",
     "tags": ["skeumorphism", "generative art", "digital nature"]
@@ -300,5 +294,26 @@
     "type": "twitter",
     "id": "1287386070418628611",
     "tags": ["digital nature", "animation"]
+  },
+  {
+    "type": "twitter",
+    "id": "1287735179860013056",
+    "tags": ["generative art"]
+  },
+  {
+    "type": "twitter",
+    "id": "1287995327660855296",
+    "tags": ["generative art", "digital nature"]
+  },
+  {
+    "type": "twitter",
+    "id": "1287995327660855296",
+    "tags": ["generative art", "digital nature"]
+  },
+  {
+    "type": "image",
+    "id": "/local/scanned-sequence.gif",
+    "desc": "Scanned Sequence of light (stop motion)",
+    "tags": ["animation", "stop motion", "scanography"]
   }
 ]
