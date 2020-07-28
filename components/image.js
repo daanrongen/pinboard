@@ -18,7 +18,7 @@ export default function ({ src, desc }) {
         }
 
         .image-container p {
-          margin: 0.5rem 0 0.5rem 0;
+          margin: 0.5rem 0 1rem 0;
           font-weight: 400;
         }
       `}</style>
